@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  geth:
+    container_name: geth
+    build: geth
+    command: >
+      --networkid 15
+      --nodiscover
+      --datadir "/root/.ethereum/devchain"
+      --unlock 0,1
+      --password "/root/.ethereum/devchain/pw"
+      --port 30303
+      --rpc
+      --rpcaddr "0.0.0.0"
+      --rpcport 8545
+      --rpccorsdomain "*"
+      --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
+    ports:
+      - "8545:8545"
+      - "30303:30303"
